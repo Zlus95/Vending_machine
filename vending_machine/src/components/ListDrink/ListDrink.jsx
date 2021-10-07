@@ -9,11 +9,21 @@ export default function ListDrink() {
 
   const deleteDrink = (id) => {
     const drinkId = drinks.find((el) => el.id === id);
+    if (customer < drinkId.price) {
+      alert(`У вас недостаточно средств для покупки ${drinkId.name}`);
+      return;
+    }
     Setcustomer(customer - drinkId.price);
     Setmachine(machine + drinkId.price);
+
     setDrink(
       drinks.map((drink) => {
-        if (drink.id === id) drink.quantity -= 1;
+        if (drink.id === id) {
+          drink.quantity -= 1;
+        }
+        if (drink.quantity === 0) {
+          alert(`${drink.name} закончился`);
+        }
         return drink;
       })
     );
