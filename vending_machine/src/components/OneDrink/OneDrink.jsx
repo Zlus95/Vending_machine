@@ -1,4 +1,5 @@
 import React from "react";
+import css from "./OneDrink.module.css";
 
 export default function OneDrink({ drink, deleteDrink }) {
   return (
@@ -6,7 +7,7 @@ export default function OneDrink({ drink, deleteDrink }) {
       <div>Наименование: {drink.name}</div>
       <div>Цена: {drink.price} руб.</div>
       <div>Остаток: {drink.quantity} шт.</div>
-      <button
+      <button className={css.buy_but}
         onClick={() => {
           deleteDrink(drink.id);
         }}
