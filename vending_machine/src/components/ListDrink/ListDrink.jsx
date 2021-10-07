@@ -30,26 +30,43 @@ export default function ListDrink() {
     );
   };
 
+  const updateSum500 = () => {
+    Setcustomer(customer + 500);
+  };
+  const updateSum100 = () => {
+    Setcustomer(customer + 100);
+  };
+  const updateSum50 = () => {
+    Setcustomer(customer + 50);
+  };
+
   return (
     <>
-      <div className={css.balans}>
-        <div>
-          <h2>Баланс покупателя: {customer} руб.</h2>
+      <>
+        <div className={css.balans}>
+          <div>
+            <h2>Баланс покупателя: {customer} руб.</h2>
+          </div>
+          <div>
+            <h2>Баланс автомата: {machine} руб.</h2>
+          </div>
         </div>
-        <div>
-          <h2>Баланс автомата: {machine} руб.</h2>
+        <div className={css.main}>
+          <ul className={css.main_info_list}>
+            {drinks.length
+              ? drinks.map((el) => (
+                  <li className={css.main_info_one}>
+                    <OneDrink drink={el} deleteDrink={deleteDrink} />{" "}
+                  </li>
+                ))
+              : null}
+          </ul>
         </div>
-      </div>
-      <div className={css.main}>
-        <ul className={css.main_info_list}>
-          {drinks.length
-            ? drinks.map((el) => (
-                <li className={css.main_info_one}>
-                  <OneDrink drink={el} deleteDrink={deleteDrink} />{" "}
-                </li>
-              ))
-            : null}
-        </ul>
+      </>
+      <div className={css.but_updater}>
+        <button className={css.but_one_updater} onClick={updateSum500}>Внести 500р.</button>
+        <button className={css.but_one_updater} onClick={updateSum100}>Внести 100р.</button>
+        <button className={css.but_one_updater} onClick={updateSum50}>Внести 50р.</button>
       </div>
     </>
   );
