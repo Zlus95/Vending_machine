@@ -1,11 +1,18 @@
 import React from "react";
-import { range } from "../../rangeDB";
 
-export default function OneDrink() {
-  console.log(range.name);
+export default function OneDrink({ drink, deleteDrink }) {
   return (
     <div>
-      <div>{range[0].name}</div>
+      <div>Наименование: {drink.name}</div>
+      <div>Цена: {drink.price} руб.</div>
+      <div>Остаток: {drink.quantity} шт.</div>
+      <button
+        onClick={() => {
+          deleteDrink(drink.id);
+        }}
+      >
+        Купить
+      </button>
     </div>
   );
 }
